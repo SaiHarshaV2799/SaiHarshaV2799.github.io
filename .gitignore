@@ -1,0 +1,28 @@
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore Virtual Environment (venv)
+Lib/
+Include/
+Scripts/
+pyvenv.cfg
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temp files
+*.log
+*.swp
+
+# Ignore VS Code settings (optional)
+.vscode/
+
+# Ignore OneDrive temp files (optional)
+*.tmp
+~$*
+
+.env

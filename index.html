@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio website</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div class="left-bar">
+        <h1 id="name">Sai Veerla</h1>
+        <p>Engineer & Data Scientist | Exploring AI, ML and seeking internship opportunities</p>
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="social-links">
+            <a href="http://www.linkedin.com/in/sai-harsha-vardhan-b5b94725a">LinkedIn</a>
+            <a href="#">GitHub</a>
+        </div>
+        <div class="questions">Questions</div>
+    </br>
+        <div class="input">
+            <textarea id="userInput" placeholder="Ask anything about Sai" style="resize: none;" rows="2"
+                cols="45"></textarea>
+            <div style="padding-right: 1.5%;"></div>
+            <button class="enter-button" onclick="generateText()">Enter</button>
+        </div>
+    </br>
+        <div id="output"></div>
+        <div>
+            <button class="question-1">What is he good at?</button>
+        </div>
+    </div>
+    <div class="right-bar">
+        <section id="about" class="sections">
+            <h2>About Me</h2>
+            <p>
+                I am a Master's student in Information Science and Technology, specializing in <strong>cybersecurity
+                analysis, data science, and machine learning</strong>.
+                With experience in <strong>front-end development</strong> and <strong>ML-driven analytics</strong>, I
+                have worked on projects such as
+                stock market prediction using logistic regression, feature scaling, and SMOTE for class balancing.
+            </p>
+            <p>
+                My technical skills include <strong>Python, SQL, ReactJS, JavaScript, and Talend</strong>, with a strong
+                ability to extract insights from data.
+                I have also explored SAP Analytics Cloud, customer segmentation, and optimization techniques for
+                business decision-making.
+            </p>
+            <p>
+                Passionate about leveraging technology for <strong>cybersecurity, data-driven decision-making, and
+                    automation</strong>,
+                I am currently seeking an internship to apply my skills in a collaborative, problem-solving environment.
+            </p>
+            <a href="#projects" class="scroll-down">See My Projects</a>
+        </section>
+    </br></br>
+        <section id="projects" class="sections">
+            <h2>Projects</h2>
+        </br>
+            <!-- Stock Market Prediction Project -->
+            <div class="project">
+                <h3>Stock Market Prediction Using Machine Learning</h3>
+                <p>
+                    Developed a predictive model for stock market trends using <strong>logistic regression</strong>,
+                    feature scaling, and <strong>SMOTE</strong> for class balancing. Applied <strong>Elastic Net
+                        Regularization</strong> to improve performance.
+                </p>
+                <p><strong>Technologies:</strong> Python, Pandas, Scikit-learn, Matplotlib</p>
+            </div>
+        </br></br>
+
+            <!-- Talend Data Transformation -->
+            <div class="project">
+                <h3>Data Integration and Transformation Using Talend</h3>                <p>
+                    Processed and transformed multiple <strong>CSV files</strong> into an organized <strong>Excel
+                        report</strong> using Talend.
+                    Implemented <strong> transformations, and error handling</strong> to ensure data accuracy.
+                </p>
+                <p><strong>Technologies:</strong> Talend, Excel, SQL</p>
+            </div>
+        </br></br>
+
+            <!-- Web Development: Country Data App -->
+            <div class="project">
+                <h3>Dynamic Web App for Country Data</h3>
+                <p>
+                    Built a <strong>React.js & MySQL-powered</strong> web application to add, retrieve, and visualize
+                    country data.
+                    Integrated <strong>Chart.js</strong> for interactive visualizations and implemented robust
+                    <strong>error handling</strong>.
+                </p>
+                <p><strong>Technologies:</strong> ReactJS, Node.js, MySQL, Chart.js</p>
+            </div>
+        </br></br>
+
+            <!-- SAP Analytics Cloud -->
+            <div class="project">
+                <h3>Customer Segmentation & Credit Limit Optimization</h3>
+                <p>
+                    Used <strong>SAP Analytics Cloud</strong> to analyze spending behavior and segment customers based
+                    on credit scores.
+                    Created <strong>geo-maps, bubble charts, and predictive insights</strong> to optimize credit limits
+                    while balancing risk and revenue.
+                </p>
+                <p><strong>Technologies:</strong> SAP Analytics Cloud, Data Visualization, Statistical Analysis</p>
+            </div>
+        </section>
+        <br>
+        <section id="resume" class="sections">
+            <h2>Resume</h2>
+            <p><a href="assests/Sai_Harsha_Vardhan_CV-8-Original.docx"
+                    download="Sai_Veerla_ML_and_Data_Scientist.docx">Download Resume (PDF)</a></p>
+        </section>
+        <br>
+        <section id="contact" class="sections">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out for collaboration, internship opportunities, or just to connect!</p>
+
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:saiharshav323@gmail.com">saiharshav323@gmail.com</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sai-veerla/"
+                        target="_blank">linkedin.com/in/sai-veerla</a></p>
+                <a href="tel:+1234567890">📞 +1 234 567 890</a>
+            </div>
+        </section>
+    </div>
+
+    <!--activate the server before entering input fastapi-->
+    <script>
+        async function generateText() {
+            const userInput = document.getElementById("userInput").value.trim();
+
+            if (!userInput) {
+                alert("Please enter a prompt.");
+                return;
+            }
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/generate/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ prompt: userInput })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch response");
+                }
+
+                const data = await response.json();
+                document.getElementById("output").innerText = data.response;
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById("output").innerText = "Error fetching response.";
+            }
+        }
+    </script>
+</body>
+
+</html>
