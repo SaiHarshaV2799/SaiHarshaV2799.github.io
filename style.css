@@ -13,9 +13,9 @@ body{
 
 .left-bar{
     width: 50%;
-    background-color: #0f172a;
-    color: white;
-    padding: 0% 5% 5% 5%;
+    background-color: #D6FFF6;
+    color: #231651;
+    padding: 5%;
     position: fixed;
     height: 100vh;
     display: flex;
@@ -32,7 +32,6 @@ body{
 
 .left-bar p {
     font-size: 2vw;
-    margin-top: -5%;
     margin-bottom: 5%;
     opacity: 0.8;
 }
@@ -43,7 +42,7 @@ body{
 
 .nav-links a {
     display: block;
-    color: white;
+    color: #231651;
     text-decoration: none;
     font-size: 2.5vw;
     margin-bottom: 2.5%;
@@ -51,7 +50,7 @@ body{
 }
 
 .nav-links a:hover {
-    color: cyan;
+    color: #3A86FF;
 }
 
 .social-links {
@@ -60,7 +59,7 @@ body{
 
 .social-links a {
     margin-right: 3%;
-    color: white;
+    color: #231651;
     text-decoration: none;
     font-size: 3vw;
 }
@@ -94,10 +93,10 @@ textarea::placeholder {
     width: 50%;
     margin-left: 50%;
     padding: 40px;
-    color: rgb(226 232 240);
+    color: #D6FFF6;
     height: 100vh;
     overflow-y: auto;
-    background-color: #0f172a;
+    background-color: #231651;
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -112,5 +111,9 @@ textarea::placeholder {
     line-height: 3vw;
     width: 100%;
     text-align: justify;
+}
+
+.right-bar a {
+    color: #2EC4B6;
 }
 
