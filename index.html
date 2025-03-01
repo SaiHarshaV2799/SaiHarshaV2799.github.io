@@ -25,19 +25,6 @@
             <a href="http://www.linkedin.com/in/sai-harsha-vardhan-b5b94725a">LinkedIn</a>
             <a href="#">GitHub</a>
         </div>
-        <div class="questions">Questions</div>
-    </br>
-        <div class="input">
-            <textarea id="userInput" placeholder="Ask anything about Sai" style="resize: none;" rows="2"
-                cols="45"></textarea>
-            <div style="padding-right: 1.5%;"></div>
-            <button class="enter-button" onclick="generateText()">Enter</button>
-        </div>
-    </br>
-        <div id="output"></div>
-        <div>
-            <button class="question-1">What is he good at?</button>
-        </div>
     </div>
     <div class="right-bar">
         <section id="about" class="sections">
@@ -117,7 +104,7 @@
         <br>
         <section id="resume" class="sections">
             <h2>Resume</h2>
-            <p><a href="assests/Sai_Harsha_Vardhan_CV-8-Original.docx"
+            <p><a href="Sai_Harsha_Vardhan_CV-8-Original.docx"
                     download="Sai_Veerla_ML_and_Data_Scientist.docx">Download Resume (PDF)</a></p>
         </section>
         <br>
@@ -133,38 +120,6 @@
             </div>
         </section>
     </div>
-
-    <!--activate the server before entering input fastapi-->
-    <script>
-        async function generateText() {
-            const userInput = document.getElementById("userInput").value.trim();
-
-            if (!userInput) {
-                alert("Please enter a prompt.");
-                return;
-            }
-
-            try {
-                const response = await fetch("http://127.0.0.1:8000/generate/", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ prompt: userInput })
-                });
-
-                if (!response.ok) {
-                    throw new Error("Failed to fetch response");
-                }
-
-                const data = await response.json();
-                document.getElementById("output").innerText = data.response;
-            } catch (error) {
-                console.error("Error:", error);
-                document.getElementById("output").innerText = "Error fetching response.";
-            }
-        }
-    </script>
 </body>
 
 </html>
